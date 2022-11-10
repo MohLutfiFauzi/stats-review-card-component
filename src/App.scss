@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend+Deca&display=swap");
+$main-background: hsl(233, 47%, 7%);
+$card-background: hsl(244, 38%, 16%);
+$accent: hsl(277, 64%, 61%);
+$main-heading-stats: hsl(0, 0%, 100%);
+$main-paragraph: hsla(0, 0%, 100%, 0.75);
+$stat-headings: hsla(0, 0%, 100%, 0.6);
+$body-text: 15px;
+
+$fonts: (
+  "Inter": "Inter",
+  "Lexend": "Lexend Deca",
+);
+
+$weights: (
+  "reguler": 400,
+  "bold": 700,
+);
+
+.App {
+  padding: 5.5em 1.5em;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .preview-card {
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: $card-background;
+    .preview-card__container-img {
+      background-color: $card-background;
+      position: relative;
+      display: block;
+      &::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: $card-background;
+        opacity: 0.7;
+      }
+      .preview-card__img {
+        width: 100%;
+        vertical-align: bottom;
+      }
+    }
+
+    .container {
+      padding: 2em 2em;
+      .preview-card__title {
+        text-align: center;
+        color: $main-heading-stats;
+        font-size: 1.75rem;
+        font-weight: map-get($weights, "bold");
+        font-family: map-get($fonts, "Inter");
+
+        &-accent {
+          color: $accent;
+        }
+      }
+
+      .preview-card__desc {
+        margin-top: 1em;
+        font-family: map-get($fonts, "Inter");
+        color: $main-paragraph;
+        text-align: center;
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      .preview-card__container-detail {
+        text-align: center;
+        margin-top: 2em;
+
+        .preview-card__detail-item {
+          margin-top: 2.2em;
+
+          .preview-card__detail-number {
+            font-family: map-get($fonts, "Inter");
+            font-weight: map-get($weights, "bold");
+            color: $main-heading-stats;
+            font-size: 1.5rem;
+          }
+
+          .preview-card__detail-text {
+            font-family: map-get($fonts, "Lexend");
+            color: $stat-headings;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 12px;
+            margin-top: 0.6em;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: "1045px") {
+  .App {
+    .preview-card {
+      display: flex;
+      flex-direction: row-reverse;
+      max-width: 1110px;
+      height: min-content;
+
+      .container {
+        padding: 4em 3.5em;
+        padding-right: 7em;
+        width: 50%;
+        .preview-card__title {
+          text-align: left;
+        }
+
+        .preview-card__desc {
+          text-align: left;
+        }
+
+        .preview-card__container-detail {
+          text-align: left;
+          display: flex;
+          .preview-card__detail-item + .preview-card__detail-item {
+            margin-left: 2.5em;
+          }
+        }
+      }
+    }
+  }
+}
